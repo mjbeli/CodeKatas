@@ -1,0 +1,2 @@
+# CodeKatas
+Practicing katas
