@@ -2,19 +2,21 @@
 
 namespace BankingCode
 {
-    public class Account: IAccountOperations
+    public class Account: IAccount
     {
-        public void deposit(int amount)
+        private int _currentAmount = 0;
+        private int _lastAmountModification = 0;
+        public void Deposit(int amount)
+        {
+            if(amount <= 0) return;
+        }
+        public void Withdraw(int amount)
         {
 
         }
-        public void withdraw(int amount)
+        public string PrintStatement()
         {
-
-        }
-        public string printStatement()
-        {
-        return string.Empty;
+            return DateTime.Now.ToString("dd.MM.yyyy") + " " + _lastAmountModification + " " + _currentAmount;
         }
 
     }

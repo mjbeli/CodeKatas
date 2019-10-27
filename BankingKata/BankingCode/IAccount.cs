@@ -1,6 +1,6 @@
-public interface IAccountOperations
+public interface IAccount
 {
-    void deposit(int amount);
-    void withdraw(int amount);
-     string printStatement();
+    void Deposit(int amount);
+    void Withdraw(int amount);
+     string PrintStatement(); 
 }
