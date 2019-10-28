@@ -9,14 +9,26 @@ namespace BankingCode
         public void Deposit(int amount)
         {
             if(amount <= 0) return;
+
+            _lastAmountModification = amount;
+            _currentAmount += amount;
         }
         public void Withdraw(int amount)
         {
+            if(amount <= 0) return;
 
+            _lastAmountModification = -1 * amount;
+            _currentAmount -= amount;
         }
         public string PrintStatement()
         {
-            return DateTime.Now.ToString("dd.MM.yyyy") + " " + _lastAmountModification + " " + _currentAmount;
+            return DateTime.Now.ToString("dd.MM.yyyy") 
+                    + " " 
+                    + (_lastAmountModification > 0 ? "+" : string.Empty)
+                    + _lastAmountModification
+                    + " " 
+                    + (_currentAmount > 0 ? "+" : string.Empty)
+                    + _currentAmount;
         }
 
     }
