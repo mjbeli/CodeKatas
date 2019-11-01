@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BankingCode
 {
@@ -22,13 +23,16 @@ namespace BankingCode
         }
         public string PrintStatement()
         {
-            return DateTime.Now.ToString("dd.MM.yyyy") 
-                    + " " 
-                    + (_lastAmountModification > 0 ? "+" : string.Empty)
-                    + _lastAmountModification
-                    + " " 
-                    + (_currentAmount > 0 ? "+" : string.Empty)
-                    + _currentAmount;
+            StringBuilder currentStatus = new StringBuilder(); // Use stringbuilder for performnce purpose            
+            currentStatus.Append(DateTime.Now.ToString("dd.MM.yyyy"));
+            currentStatus.Append(" ");
+            currentStatus.Append((_lastAmountModification > 0 ? "+" : string.Empty));
+            currentStatus.Append( _lastAmountModification);
+            currentStatus.Append( " " );
+            currentStatus.Append( (_currentAmount > 0 ? "+" : string.Empty));
+            currentStatus.Append( _currentAmount);
+
+            return currentStatus.ToString();
         }
 
     }
