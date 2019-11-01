@@ -21,19 +21,19 @@ namespace BankingCode
             _lastAmountModification = -1 * amount;
             _currentAmount -= amount;
         }
+
         public string PrintStatement()
         {
             StringBuilder currentStatus = new StringBuilder(); // Use stringbuilder for performnce purpose            
             currentStatus.Append(DateTime.Now.ToString("dd.MM.yyyy"));
             currentStatus.Append(" ");
             currentStatus.Append((_lastAmountModification > 0 ? "+" : string.Empty));
-            currentStatus.Append( _lastAmountModification);
-            currentStatus.Append( " " );
-            currentStatus.Append( (_currentAmount > 0 ? "+" : string.Empty));
-            currentStatus.Append( _currentAmount);
+            currentStatus.Append(_lastAmountModification);
+            currentStatus.Append(" ");
+            currentStatus.Append((_currentAmount > 0 ? "+" : string.Empty));
+            currentStatus.Append(_currentAmount);
 
             return currentStatus.ToString();
         }
-
     }
 }
