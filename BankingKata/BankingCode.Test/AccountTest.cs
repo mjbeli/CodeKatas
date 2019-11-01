@@ -33,11 +33,48 @@ namespace BankingCode.Test
         {
             accountOperator = new Account();
             accountOperator.Deposit(100);
-            string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " +100 " + "100";
+            string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " +100 " + "+100";
             string postStatement = accountOperator.PrintStatement(); 
             Assert.AreEqual(postStatement, expectedStatement);           
         }
-        
+
+        [TestMethod]
+        public void WithdrawAmountTest()
+        {
+            accountOperator = new Account();
+            accountOperator.Deposit(100);
+            accountOperator.Withdraw(30);
+            string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " -30 " + "+70";
+            string postStatement = accountOperator.PrintStatement(); 
+            Assert.AreEqual(postStatement, expectedStatement);           
+        }
+
+        [TestMethod]
+        public void ShowLastPositiveOperationTest()
+        {
+            string expectedLasOperation = "+3100";
+            accountOperator = new Account();
+            accountOperator.Deposit(100);
+            accountOperator.Deposit(500);
+            accountOperator.Deposit(3100);
+            
+            string currentStatement = accountOperator.PrintStatement();             
+            Assert.IsTrue(currentStatement.LastIndexOf(expectedLasOperation) > 0);              
+        }
+
+        [TestMethod]
+        public void ShowLastNegativeOperationTest()
+        {
+            string expectedLasOperation = "-2790";
+            accountOperator = new Account();
+            accountOperator.Deposit(100);
+            accountOperator.Deposit(500);
+            accountOperator.Withdraw(2790);
+            
+            string currentStatement = accountOperator.PrintStatement();             
+            Assert.IsTrue(currentStatement.LastIndexOf(expectedLasOperation) > 0);              
+        }
+
         [TestMethod]
         public void WithdrawNegativeAmountTest()
         {
@@ -49,7 +86,7 @@ namespace BankingCode.Test
         }
 
         [TestMethod]
-        public void WithdrawAmountAndNegativeBalanceTest()
+        public void NegativeBalanceTest()
         {
             accountOperator = new Account();
             accountOperator.Withdraw(100);
@@ -68,5 +105,7 @@ namespace BankingCode.Test
             string postStatement = accountOperator.PrintStatement(); 
             Assert.AreEqual(postStatement, expectedStatement);             
         }
+
+        
     }
 }
