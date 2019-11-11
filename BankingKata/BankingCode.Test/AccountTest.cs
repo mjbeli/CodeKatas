@@ -7,12 +7,11 @@ namespace BankingCode.Test
     public class AccountTest
     {
         IAccount accountOperator = null;
-
-
+        
         [TestMethod]
         public void PrintInitialAmountTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             string statement = accountOperator.PrintStatement();
             string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " 0 0";
             Assert.AreEqual(statement, expectedStatement);
@@ -21,7 +20,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void DepositNegativeAmountTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             string preStatement = accountOperator.PrintStatement();
             accountOperator.Deposit(-1);
             string postStatement = accountOperator.PrintStatement(); 
@@ -31,7 +30,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void DepositAmountTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             accountOperator.Deposit(100);
             string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " +100 " + "+100";
             string postStatement = accountOperator.PrintStatement(); 
@@ -41,7 +40,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void WithdrawAmountTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             accountOperator.Deposit(100);
             accountOperator.Withdraw(30);
             string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " -30 " + "+70";
@@ -56,8 +55,7 @@ namespace BankingCode.Test
             accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
             accountOperator.Deposit(100);
             accountOperator.Deposit(500);
-            accountOperator.Deposit(3100);
-            
+            accountOperator.Deposit(3100);            
             string currentStatement = accountOperator.PrintStatement();             
             Assert.IsTrue(currentStatement.LastIndexOf(expectedLasOperation) > 0);              
         }
@@ -66,7 +64,7 @@ namespace BankingCode.Test
         public void ShowLastNegativeOperationTest()
         {
             string expectedLasOperation = "-2790";
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             accountOperator.Deposit(100);
             accountOperator.Deposit(500);
             accountOperator.Withdraw(2790);
@@ -78,7 +76,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void WithdrawNegativeAmountTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);                        
             string preStatement = accountOperator.PrintStatement();
             accountOperator.Withdraw(-1);
             string postStatement = accountOperator.PrintStatement(); 
@@ -88,7 +86,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void NegativeBalanceTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             accountOperator.Withdraw(100);
             string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " -100 " + "-100";
             string postStatement = accountOperator.PrintStatement(); 
@@ -98,7 +96,7 @@ namespace BankingCode.Test
         [TestMethod]
         public void ZeroBalanceTest()
         {
-            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
+            accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);            
             accountOperator.Deposit(100);
             accountOperator.Withdraw(100);
             string expectedStatement = DateTime.Now.ToString("dd.MM.yyyy") + " -100 " + "0";

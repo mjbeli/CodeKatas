@@ -9,9 +9,10 @@ namespace BankingCode
         public static IAccount getAccountObject(AccountType accountType)
         {
             if(accountType == AccountType.StandardAccountType)
-                return new Account();
+                return new ConcreteAccount();
             
             return null;
         }
+
     }
 }
