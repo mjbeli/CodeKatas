@@ -4,12 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BownlingCode.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class BownlingTest
     {
         [TestMethod]
         public void TestMethod1()
-        {
-            
+        {            
+            Assert.IsTrue(true);
         }
     }
 }
