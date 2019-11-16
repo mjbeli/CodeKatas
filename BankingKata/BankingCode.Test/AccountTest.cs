@@ -8,8 +8,9 @@ namespace BankingCode.Test
     {
         private IAccount _accountOperator = null;
         
+        // DRY, let's encapsulate this
         [TestInitialize]
-        public void GetAccountOperatorFromFactory() // DRY, let's encapsulate this
+        public void GetAccountOperatorFromFactory() // Must be public. Framework is looking for public methods.
         {
             _accountOperator = AccountFactory.getAccountObject(AccountType.StandardAccountType);
         }
