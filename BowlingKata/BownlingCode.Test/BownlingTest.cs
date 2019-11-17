@@ -16,7 +16,7 @@ namespace BownlingCode.Test
         }
 
         [TestMethod]
-        public void ShowBasicScore()
+        public void ShowInitialScore()
         {
             Assert.IsTrue(_myGame.score() == 0);            
         }
@@ -28,5 +28,13 @@ namespace BownlingCode.Test
             _myGame.roll(-3);
             Assert.IsTrue(_myGame.score() == 0);
         }
+
+        [TestMethod]
+        public void JustOneRoll()
+        {
+            _myGame.roll(7);
+            Assert.IsTrue(_myGame.score() == 7);            
+        }
+
     }
 }

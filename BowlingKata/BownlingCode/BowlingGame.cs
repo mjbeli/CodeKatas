@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace BownlingCode
@@ -11,6 +12,8 @@ namespace BownlingCode
         {
             if(pins < 0 || pins > 10)
                 return;
+            
+            _rolls.Add(pins);
         }
         
         public int score()
@@ -18,7 +21,7 @@ namespace BownlingCode
             if(_rolls.Count == 0)
                 return 0;
 
-            return -1;
+            return _rolls.Sum();
         }
     }
 }
