@@ -6,14 +6,16 @@ namespace BownlingCode
 {
     public class BowlingGame: IBowlingGame
     {
-        private IList<int> _rolls = new List<int>(); // Tell, don't ask. Don't expose this atribute.
+        private IList<FrameDTO> _rolls = new List<FrameDTO>(); // Tell, don't ask. Don't expose this atribute.
 
-        public void roll(int pins)
+        public void roll(int pinsFirstRoll = 0, int pinsSecondRoll = 0)
         {
-            if(pins < 0 || pins > 10)
+            if(pinsFirstRoll < 0 || pinsFirstRoll > 10 || 
+                pinsSecondRoll < 0 || pinsSecondRoll > 10 ||
+                pinsFirstRoll + pinsSecondRoll > 10)
                 return;
-            
-            _rolls.Add(pins);
+                        
+            _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
         }
         
         public int score()
@@ -21,7 +23,7 @@ namespace BownlingCode
             if(_rolls.Count == 0)
                 return 0;
 
-            return _rolls.Sum();
+            return _rolls.Sum(q => q.getMySum());
         }
     }
 }
