@@ -39,6 +39,25 @@ namespace BownlingCode.Test
         }
 
         [TestMethod]
+        public void MoreThan10Rolls()
+        {            
+            _myGame.roll(1, 1);
+            Assert.IsTrue(_myGame.score() == 2);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1);
+            _myGame.roll(1, 1); // This is the 10th roll, my score should be 20
+            _myGame.roll(1, 1); // illegal roll.
+            _myGame.roll(1, 1); // illegal roll.
+            Assert.IsTrue(_myGame.score() == 20);
+        }
+
+        [TestMethod]
         public void JustFewSimpleRolls()
         {
             _myGame.roll(7);
@@ -47,6 +66,13 @@ namespace BownlingCode.Test
             Assert.IsTrue(_myGame.score() == 12);  
             _myGame.roll(6, 2);
             Assert.IsTrue(_myGame.score() == 20);              
+        }
+
+        [TestMethod]
+        public void SpareAndNextRollNotInformed()
+        {
+            _myGame.roll(7,3);
+            Assert.IsTrue(_myGame.score() == 0);              
         }
 
         

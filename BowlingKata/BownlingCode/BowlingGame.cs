@@ -14,16 +14,30 @@ namespace BownlingCode
                 pinsSecondRoll < 0 || pinsSecondRoll > 10 ||
                 pinsFirstRoll + pinsSecondRoll > 10)
                 return;
-                        
+
+            if(_rolls.Count == 10)            
+                return;
+
             _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
         }
         
         public int score()
         {
-            if(_rolls.Count == 0)
-                return 0;
+            int myCurrentScore = 0;
 
-            return _rolls.Sum(q => q.getMySum());
+            if(_rolls.Count == 0)
+                return myCurrentScore;
+
+            for (int i = _rolls.Count ; i > 0 ; i--)
+            { 
+                FrameDTO f = _rolls[i-1];
+                if(!f.isSpare())
+                    myCurrentScore += f.getMySum();
+                if(f.isSpare() && i != _rolls.Count) // The next roll is registered.
+                    myCurrentScore += f.getMySum() + _rolls[i].getSpareSum();                    
+            }
+            
+            return myCurrentScore;
         }
     }
 }
