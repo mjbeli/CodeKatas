@@ -75,6 +75,16 @@ namespace BownlingCode.Test
             Assert.IsTrue(_myGame.score() == 0);              
         }
 
+        [TestMethod]
+        public void SpareAndNextRollInformed()
+        {
+            _myGame.roll(7,3);
+            _myGame.roll(3,4);
+            Assert.IsTrue(_myGame.score() == 20);    
+            _myGame.roll(2,8);          
+            _myGame.roll(5,1);
+            Assert.IsTrue(_myGame.score() == 41);    
+        }
         
     }
 }
