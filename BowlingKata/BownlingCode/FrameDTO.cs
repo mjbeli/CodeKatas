@@ -18,9 +18,19 @@ namespace BownlingCode
             return _firstRoll + _secondRoll == 10 && _firstRoll != 10;
         }
 
+        public bool isStrike ()
+        {
+            return _firstRoll == 10;
+        }
+
         public int getSpareSum()
         {
             return _firstRoll;
+        }
+
+        public int getStrikeSum()
+        {
+            return _firstRoll +_secondRoll;
         }
         public int getMySum() 
         { 

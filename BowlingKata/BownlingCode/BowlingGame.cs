@@ -31,13 +31,30 @@ namespace BownlingCode
             for (int i = _rolls.Count ; i > 0 ; i--)
             { 
                 FrameDTO f = _rolls[i-1];
-                if(!f.isSpare())
+                if(!f.isSpare() && !f.isStrike())
                     myCurrentScore += f.getMySum();
+                if(f.isStrike() && i != _rolls.Count)
+                    myCurrentScore += calculateStrikePoints(i-1);
                 if(f.isSpare() && i != _rolls.Count) // The next roll is registered.
                     myCurrentScore += f.getMySum() + _rolls[i].getSpareSum();                    
             }
             
             return myCurrentScore;
+        }
+
+        private int calculateStrikePoints(int pos)
+        {
+            if(pos >= _rolls.Count) // There isn't more rolls
+                return 0;
+            
+            // if next roll is a strike, need to wait until next frame.
+            if(_rolls[pos + 1].isStrike() && pos + 2 >= _rolls.Count) 
+                return 0;
+
+            if(_rolls[pos + 1].isStrike())
+                return _rolls[pos].getStrikeSum() + _rolls[pos + 1].getStrikeSum() + _rolls[pos + 2].getSpareSum();
+            else
+                return _rolls[pos].getStrikeSum() + _rolls[pos + 1].getMySum();           
         }
     }
 }

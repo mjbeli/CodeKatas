@@ -78,13 +78,62 @@ namespace BownlingCode.Test
         [TestMethod]
         public void SpareAndNextRollInformed()
         {
-            _myGame.roll(7,3);
+            _myGame.roll(7,3); // spare!
             _myGame.roll(3,4);
             Assert.IsTrue(_myGame.score() == 20);    
-            _myGame.roll(2,8);          
+            _myGame.roll(2,8); // spare!          
             _myGame.roll(5,1);
             Assert.IsTrue(_myGame.score() == 41);    
         }
+
+        [TestMethod]
+        public void StrikeAndNextRollNotInformed()
+        {
+            _myGame.roll(10); // strike!
+            Assert.IsTrue(_myGame.score() == 0);                
+        }
         
+        [TestMethod]
+        public void StrikeAndNextRollInformed()
+        {
+            _myGame.roll(10); // strike!
+            _myGame.roll(3,4);
+            Assert.IsTrue(_myGame.score() == 24);                                      
+        }
+
+        [TestMethod]
+        public void ConcatStrikesNotFinish()
+        {                           
+            _myGame.roll(10); // strike!
+            _myGame.roll(10); // strike!
+            Assert.IsTrue(_myGame.score() == 0);
+        }
+
+        [TestMethod]
+        public void ConcatStrikes()
+        {                           
+            _myGame.roll(10); // strike!
+            _myGame.roll(10); // strike!
+            _myGame.roll(3,5);
+            Assert.IsTrue(_myGame.score() == 49);
+        }
+
+        [TestMethod]
+        public void ThreeFramesInLastRoll()
+        {                           
+            _myGame.roll(1); 
+            _myGame.roll(1); 
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(1);
+            _myGame.roll(10);
+            _myGame.roll(10);
+            _myGame.roll(1);
+            Assert.IsTrue(_myGame.score() == 49);
+        }
     }
 }
