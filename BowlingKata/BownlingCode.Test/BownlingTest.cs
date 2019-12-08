@@ -153,5 +153,17 @@ namespace BownlingCode.Test
             Assert.IsTrue(_myGame.score() == 41);
         }
 
+        [TestMethod]
+        public void ThePerfectMatch()
+        {                           
+            _myGame.roll(10); _myGame.roll(10); 
+            _myGame.roll(10); _myGame.roll(10); 
+            _myGame.roll(10); _myGame.roll(10);
+            _myGame.roll(10); _myGame.roll(10);
+            _myGame.roll(10); _myGame.roll(10);
+            _myGame.roll(10); _myGame.roll(10);
+            Assert.IsTrue(_myGame.score() == 300);
+        }
+
     }
 }
