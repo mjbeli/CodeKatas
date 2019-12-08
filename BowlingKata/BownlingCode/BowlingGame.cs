@@ -15,10 +15,21 @@ namespace BownlingCode
                 pinsFirstRoll + pinsSecondRoll > 10)
                 return;
 
-            if(_rolls.Count == 10)            
-                return;
+            if(_rolls.Count == 10 && !_rolls[9].isSpare() && !_rolls[9].isStrike())
+              return;
 
-            _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
+            // Last frame only has 1 roll. And only in case roll 10 is a spare or strike.
+            if(_rolls.Count == 11 && _rolls[9].isStrike() && _rolls[10].isStrike())
+                _rolls.Add(new FrameDTO(pinsFirstRoll, 0)); 
+
+            if(_rolls.Count == 10 && _rolls[9].isSpare())
+                _rolls.Add(new FrameDTO(pinsFirstRoll, 0)); 
+            
+            if(_rolls.Count == 10 && _rolls[9].isStrike())
+                _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
+            
+            if(_rolls.Count < 10)
+                _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
         }
         
         public int score()
@@ -30,6 +41,8 @@ namespace BownlingCode
 
             for (int i = _rolls.Count ; i > 0 ; i--)
             { 
+                if(i > 10)
+                    continue;
                 FrameDTO f = _rolls[i-1];
                 if(!f.isSpare() && !f.isStrike())
                     myCurrentScore += f.getMySum();

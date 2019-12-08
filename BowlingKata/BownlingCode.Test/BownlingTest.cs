@@ -121,19 +121,37 @@ namespace BownlingCode.Test
         [TestMethod]
         public void ThreeFramesInLastRoll()
         {                           
-            _myGame.roll(1); 
-            _myGame.roll(1); 
-            _myGame.roll(1);
-            _myGame.roll(1);
-            _myGame.roll(1);
-            _myGame.roll(1);
-            _myGame.roll(1);
-            _myGame.roll(1);
-            _myGame.roll(1);
+            _myGame.roll(1,1); 
+            _myGame.roll(1,1); 
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
             _myGame.roll(10);
-            _myGame.roll(10);
-            _myGame.roll(1);
-            Assert.IsTrue(_myGame.score() == 49);
+            _myGame.roll(3,4);
+            Assert.IsTrue(_myGame.score() == 35);
         }
+
+        [TestMethod]
+        public void StrikesInLastRoll()
+        {                           
+            _myGame.roll(1,1); 
+            _myGame.roll(1,1); 
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(1,1);
+            _myGame.roll(10);
+            _myGame.roll(10);
+            _myGame.roll(3,4);
+            Assert.IsTrue(_myGame.score() == 41);
+        }
+
     }
 }
