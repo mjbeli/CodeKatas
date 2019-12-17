@@ -17,6 +17,7 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -28,7 +29,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+
+- script: dotnet test
+  displayName: 'Testing!'
+
+# - task: VSTest@2
+#   inputs:
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
