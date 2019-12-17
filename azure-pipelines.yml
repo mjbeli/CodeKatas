@@ -30,7 +30,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-- script: dotnet test
+- script: dotnet test "**/BownlingCode.Test/BownlingCode.Test.csproj"
   displayName: 'Testing!'
 
 # - task: VSTest@2
