@@ -41,6 +41,6 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
-    testResultsFiles: '**/*.trx'
+    testResultsFiles: '**/TEST-*.trx'
     failTaskOnFailedTests: true
     testRunTitle: 'Testing bowling'
