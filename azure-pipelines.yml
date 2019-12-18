@@ -34,6 +34,7 @@ steps:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       **\*BownlingCode.Test.dll
+      !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: PublishTestResults@2
