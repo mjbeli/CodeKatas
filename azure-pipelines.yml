@@ -41,7 +41,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
-    testResultsFiles: '**\*.trx'
+    testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+    searchFolder: '$(Agent.TempDirectory)'
     testRunTitle: 'Testing bowling'
