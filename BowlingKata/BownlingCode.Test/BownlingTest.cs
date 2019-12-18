@@ -162,7 +162,7 @@ namespace BownlingCode.Test
             _myGame.roll(10); _myGame.roll(10);
             _myGame.roll(10); _myGame.roll(10);
             _myGame.roll(10); _myGame.roll(10);
-            Assert.IsTrue(_myGame.score() == 30);
+            Assert.IsTrue(_myGame.score() == 300);
         }
 
     }
