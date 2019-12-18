@@ -33,7 +33,7 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      !**\*BownlingCode.Test.dll
+      **\*BownlingCode.Test.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: PublishTestResults@2
