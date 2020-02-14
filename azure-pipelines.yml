@@ -50,8 +50,8 @@ steps:
   inputs:
     SonarQube: 'SonarqubeInMyAzure'
     scannerMode: 'MSBuild'
-    projectKey: 'sonar.Key'
-    projectName: 'sonar.Name'
+    projectKey: 'SonarAzureDevOps' # This literals are in the configuration of the sonar project
+    projectName: 'SonarAzureDevOps'
 - task: SonarQubeAnalyze@4
 - task: SonarQubePublish@4
   inputs:
