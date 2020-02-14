@@ -22,6 +22,15 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+# Preparation of sonar MUST be before build task. 
+# More info: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-azure-devops/
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'SonarqubeInMyAzure'
+    scannerMode: 'MSBuild'
+    projectKey: 'SonarAzureDevOps' # This literals are in the configuration of the sonar project
+    projectName: 'SonarAzureDevOps'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -46,13 +55,15 @@ steps:
 #     failTaskOnFailedTests: true
 #     searchFolder: '$(Agent.TempDirectory)'
 #     testRunTitle: 'Testing bowling'
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'SonarqubeInMyAzure'
-    scannerMode: 'MSBuild'
-    projectKey: 'SonarAzureDevOps' # This literals are in the configuration of the sonar project
-    projectName: 'SonarAzureDevOps'
+
+
+# Execution of sonar analysisMUST be after test execution. 
+# More info: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-azure-devops/
 - task: SonarQubeAnalyze@4
 - task: SonarQubePublish@4
   inputs:
     pollingTimeoutSec: '300'
+
+ #  --> Prepare Analysis Configuration task before any MSBuild or Visual Studio Build tasks.
+ #  --> Run Code Analysis task after the Visual Studio Test task.
+ #  --> Publish Quality Gate Result task after the Run Code Analysis task
