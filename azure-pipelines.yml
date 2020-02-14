@@ -38,7 +38,7 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 # MBA: This task works fine and publish test results, but it's redundant
-# because VSTest@2 automatic test results when it's executed
+# because VSTest@2 publish the test results when it's executed
 # - task: PublishTestResults@2
 #   inputs:
 #     testResultsFormat: 'VSTest'
