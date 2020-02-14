@@ -46,3 +46,13 @@ steps:
 #     failTaskOnFailedTests: true
 #     searchFolder: '$(Agent.TempDirectory)'
 #     testRunTitle: 'Testing bowling'
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'SonarqubeInMyAzure'
+    scannerMode: 'MSBuild'
+    projectKey: 'sonar.Key'
+    projectName: 'sonar.Name'
+- task: SonarQubeAnalyze@4
+- task: SonarQubePublish@4
+  inputs:
+    pollingTimeoutSec: '300'
