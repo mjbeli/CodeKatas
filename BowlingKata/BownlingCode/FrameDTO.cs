@@ -1,13 +1,12 @@
-using System;
 
 namespace BownlingCode
 {
-    public class FrameDTO
+    public class FrameDto
     {
-        private int _firstRoll;
-        private int _secondRoll;
+        private readonly int _firstRoll;
+        private readonly int _secondRoll;
 
-        public FrameDTO (int roll1, int roll2)
+        public FrameDto (int roll1, int roll2)
         {
             _firstRoll = roll1;
             _secondRoll = roll2;

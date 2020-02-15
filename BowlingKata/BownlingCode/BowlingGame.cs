@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BownlingCode
 {
     public class BowlingGame: IBowlingGame
     {
-        private IList<FrameDTO> _rolls = new List<FrameDTO>(); // Tell, don't ask. Don't expose this atribute.
+        private readonly IList<FrameDto> _rolls = new List<FrameDto>(); // Tell, don't ask. Don't expose this atribute.
 
         public void roll(int pinsFirstRoll = 0, int pinsSecondRoll = 0)
         {
@@ -20,16 +18,16 @@ namespace BownlingCode
 
             // Last frame only has 1 roll. And only in case roll 10 is a spare or strike.
             if(_rolls.Count == 11 && _rolls[9].isStrike() && _rolls[10].isStrike())
-                _rolls.Add(new FrameDTO(pinsFirstRoll, 0)); 
+                _rolls.Add(new FrameDto(pinsFirstRoll, 0)); 
 
             if(_rolls.Count == 10 && _rolls[9].isSpare())
-                _rolls.Add(new FrameDTO(pinsFirstRoll, 0)); 
+                _rolls.Add(new FrameDto(pinsFirstRoll, 0)); 
             
             if(_rolls.Count == 10 && _rolls[9].isStrike())
-                _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
+                _rolls.Add(new FrameDto(pinsFirstRoll, pinsSecondRoll));
             
             if(_rolls.Count < 10)
-                _rolls.Add(new FrameDTO(pinsFirstRoll, pinsSecondRoll));
+                _rolls.Add(new FrameDto(pinsFirstRoll, pinsSecondRoll));
         }
         
         public int score()
@@ -43,7 +41,7 @@ namespace BownlingCode
             { 
                 if(i > 10)
                     continue;
-                FrameDTO f = _rolls[i-1];
+                FrameDto f = _rolls[i-1];
                 if(!f.isSpare() && !f.isStrike())
                     myCurrentScore += f.getMySum();
                 if(f.isStrike() && i != _rolls.Count)
