@@ -7,19 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BankingKata/BankingKata.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "build-bowling",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/BowlingKata/BowlingKata.sln",
+                "${workspaceFolder}/BankingCode.Test/BankingCode.Test.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -31,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/BankingKata/BankingKata.csproj",
+                "${workspaceFolder}/BankingCode.Test/BankingCode.Test.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -44,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/BankingKata/BankingKata.csproj",
+                "${workspaceFolder}/BankingCode.Test/BankingCode.Test.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
