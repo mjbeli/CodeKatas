@@ -1,12 +1,13 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Abstrations;
 
 namespace BankingCode.Test
 {
     [TestClass]
     public class AccountTest
     {
-        private IAccount _accountOperator = null;
+        private Account _accountOperator = null;
         
         // DRY, let's encapsulate this
         [TestInitialize]

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Text;
+using Abstrations;
 
 namespace BankingCode
 {
-    public class ConcreteAccount: AbstractAccount
+    public class ConcreteAccount: Account
     {
 
         /// Override PrintStatement function
