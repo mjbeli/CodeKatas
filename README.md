@@ -1,5 +1,5 @@
 # CodeKatas
-Practicing katas, SOLID, patterns
+Katas for pacticing, SOLID, patterns, unit testing...
 
 
 ### BankingKata 
