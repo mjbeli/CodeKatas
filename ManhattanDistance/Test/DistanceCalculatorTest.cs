@@ -1,13 +1,12 @@
 using Xunit;
 using Geometries;
-using System.Collections.Generic;
-using System.Collections;
 using System;
 using DistanceOperators;
+using Test.ClassData;
 
-namespace DistanceCalculatorTest.Test
+namespace Test.ManhattanDistance
 {
-    
+
     public class DistanceCalculatorTest : IDisposable
     {
         DistanceCalculator _calc = null;
@@ -33,7 +32,7 @@ namespace DistanceCalculatorTest.Test
         [Fact]
         public void CreatePointObject() // Facts cann't receive parameters
         {
-            Point p = new Point(1,2);
+            Point p = new Point(1, 2);
             Assert.True(p != null);
         }
 
@@ -53,19 +52,11 @@ namespace DistanceCalculatorTest.Test
             Assert.True(_calc.manhattanDistance(p, null) == -1);
         }
 
-    }
+        
+
+    } // DistanceCalculatorTest
 
 
-    public class PointClassData : IEnumerable<object[]>
-    {
-        public IEnumerator<object[]> GetEnumerator()
-        {
-            
-            yield return new object[] {
-                new Point (0,0)
-            };
-        }
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    } 
     
+
 }
