@@ -12,7 +12,6 @@ namespace Geometries
             _x = x; _y = y;
         }
 
-
         public int ManhattanDistance (Point p)
         {
             if (p == null ) 
@@ -23,11 +22,7 @@ namespace Geometries
             int manhattanX = this._x - p._x;
             int manhattanY = this._y - p._y;
 
-            if(manhattanX < 0)
-                manhattanX *= -1;
-            if(manhattanY < 0)
-                manhattanY *= -1;
-            return manhattanX + manhattanY;
+            return Math.Abs(manhattanX) + Math.Abs(manhattanY);
         }
 
         public override bool Equals(Object obj)
