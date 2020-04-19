@@ -58,20 +58,22 @@ namespace Test.ManhattanDistance
             Assert.True(p1.ManhattanDistance(p2) >= 0);
         }
 
+        [Theory]
+        [ClassData(typeof(FirstPointGreaterThanSecond))]
+        [ClassData(typeof(FirstPointLowerThanSecond))]      
+        public void CalculateManDist_ResultFive(Point p1, Point p2)
+        {
+            // Test that a manhattan distance is equal if we change p1 and p2 values.
+            // FirstPointGreaterThanSecond --> p1(3,5) p2(1,2)
+            // FirstPointLowerThanSecond  --> p1(1,2) p2(3,5)
+            Assert.True(p1.ManhattanDistance(p2) == 5); 
+        }
 
         [Fact]
         public void CalculateManDist_ConcreteCases() // Facts cann't receive parameters
         {
-            Point p1 = new Point(3, 5);
-            Point p2 = new Point(1, 2);
-            Assert.True(p1.ManhattanDistance(p2) == 5);
-
-            p1 = new Point(1, 2);
-            p2 = new Point(3, 5);
-            Assert.True(p1.ManhattanDistance(p2) == 5);
-
-            p1 = new Point(7, 2);
-            p2 = new Point(3, 5);
+            Point p1 = new Point(7, 2);
+            Point p2 = new Point(3, 5);
             Assert.True(p1.ManhattanDistance(p2) == 7);
 
             p1 = new Point(4, 2);
