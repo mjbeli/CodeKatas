@@ -17,16 +17,14 @@ namespace Pizza.Test
         public void CreateMargaritaPizza() // Facts cann't receive parameters
         {
             IPizza p = new PizzaFactory().CreatePizza(PizzaTypes.MargarinaPizza);
-            Assert.True(p != null);
-            Assert.True(p.PizzaDescription() == "Margarina pizza");
+            Assert.True(p != null && p.PizzaDescription() == "Margarina pizza");
         }
 
         [Fact]
         public void CreateBBqPizza() // Facts cann't receive parameters
         {
             IPizza p = new PizzaFactory().CreatePizza(PizzaTypes.BbqPizza);
-            Assert.True(p != null);
-            Assert.True(p.PizzaDescription() == "Barbacue pizza");
+            Assert.True(p != null && p.PizzaDescription() == "Barbacue pizza");
         }
     } // end class FactoryPatternTest
 
