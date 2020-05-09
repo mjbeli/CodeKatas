@@ -4,9 +4,6 @@ namespace FactoryPattern.Business.Implementations
 
     public class MargarinaPizzaImplementation : IPizza
     {
-        public string PizzaDescription()
-        {
-            return "Margarina pizza";
-        }
+        public string PizzaDescription() => "Margarina pizza";
     }
 }
