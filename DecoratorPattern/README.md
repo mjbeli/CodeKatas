@@ -1,1 +1,1 @@
-<img src="https://en.wikipedia.org/wiki/File:Decorator_UML_class_diagram.svg"</img>
+<img src="https://i.stack.imgur.com/ctCkm.png"</img>
