@@ -21,15 +21,24 @@ namespace DecoratorPattern.Test
             - GrandSize: ", tamaño grande"
             - Canela: ", con canela"
         */
+
+        [Fact]
+        public void Cerveza()
+        {
+            BeverageComponent b = new Beer();
+           
+            Assert.True(b.getCost()==2.5);
+            Assert.True(b.getDescription()=="Cerveza");
+        }
+
         [Fact]
         public void CafeConHielo()
         {
             BeverageComponent b = new Coffee();
             b = new IceDecorator(b);
-            Console.WriteLine(b.getDescription());
+            
             Assert.True(b.getCost()==2.0);
-            Assert.True(b.getDescription()==", con hielo");
-            //Assert.True(b.getDescription()=="Café");
+            Assert.True(b.getDescription()=="Café, con hielo");
         }
 
         [Fact]
@@ -39,10 +48,8 @@ namespace DecoratorPattern.Test
             b = new IceDecorator(b);
             b = new GrandSizeDecorator(b);
 
-            Console.WriteLine(b.getDescription());
             Assert.True(b.getCost()==3.75);
-            //Assert.True(b.getDescription()=="Café, con hielo");
-            //Assert.True(b.getDescription()=="Café");
+            Assert.True(b.getDescription()=="Café, con hielo, tamaño grande");
         }
 
         [Fact]
@@ -51,10 +58,19 @@ namespace DecoratorPattern.Test
             BeverageComponent b = new Beer();
             b = new GrandSizeDecorator(b);
 
-            Console.WriteLine(b.getDescription());
             Assert.True(b.getCost()==4.25);
-            //Assert.True(b.getDescription()=="Café, con hielo");
-            //Assert.True(b.getDescription()=="Café");
+            Assert.True(b.getDescription()=="Cerveza, tamaño grande");
+        }
+
+        [Fact]
+        public void CervezaGrandeConCanela()
+        {
+            BeverageComponent b = new Beer();
+            b = new GrandSizeDecorator(b);
+            b = new CanelaDecorator(b);
+
+            Assert.True(b.getCost()==4.4);
+            Assert.True(b.getDescription()=="Cerveza, tamaño grande, con canela");
         }
     }
 }
