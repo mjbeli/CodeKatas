@@ -1,5 +1,4 @@
-﻿using System;
-using CommandPattern.Command;
+﻿using CommandPattern.Command;
 using CommandPattern.Command.Devices;
 using Xunit;
 
